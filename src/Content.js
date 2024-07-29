@@ -1,26 +1,20 @@
-import React from 'react'
+import { FaTrashAlt } from "react-icons/fa";
+import ItemList from "./ItemList";
 
-const Content = () => {
-    const handleNameChange=()=>{
-        const names=['Saniya','Sara','Bhoo'];
-        const int=Math.floor(Math.random()*3);
-        return names[int]
-      }
-     const handleClick=()=>{
-        console.log("You clicked it!!")
-     }
-     const handleClick2=(name)=>{
-        console.log(`${name} was clicked`)
-     }
+const Content = ({ items, handleCheck, handleDelete }) => {
   return (
     <main>
-        <p>
-            Hello {handleNameChange()}!
-        </p>
-        <button onClick={handleClick}>Click me</button>
-        <button onClick={()=>{handleClick2('Saniya')}}>Click me</button>
+      {items.length ? (
+        <ItemList
+          items={items}
+          handleCheck={handleCheck}
+          handleDelete={handleDelete}
+        />
+      ) : (
+        <p style={{ marginTop: "2rem" }}>Your list is empty</p>
+      )}
     </main>
-  )
-}
+  );
+};
 
-export default Content
+export default Content;
